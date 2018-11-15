@@ -26,7 +26,7 @@ export default new Router({
         title: '登录'
       }
     },
-    ...ManagerRoutes,
+    ManagerRoutes,
     {
       path: '/home',
       name: 'Home',
