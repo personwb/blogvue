@@ -46,8 +46,8 @@
 </template>
 
 <script>
-import TitleInput from '../components/TitleInput'
-import {request, URLDefines, articalAdd} from '../api/api'
+import TitleInput from '../../components/TitleInput'
+import {request, URLDefines, articalAdd} from '../../api/api'
 export default {
   name: "articaladd",
   components: {

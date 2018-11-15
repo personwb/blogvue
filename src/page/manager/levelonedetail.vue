@@ -18,8 +18,8 @@
 </template>
 
 <script>
-  import {addLevelOne, levelOneDetail} from '../api/api'
-  import TitleInput from '../components/TitleInput'
+  import {addLevelOne, levelOneDetail} from '../../api/api'
+  import TitleInput from '../../components/TitleInput'
   export default {
     name: 'LevelOneDetail',
     data: function () {

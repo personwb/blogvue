@@ -26,8 +26,8 @@
 </template>
 
 <script>
-  import {addLevelTwo, levelTwoDetail, request, URLDefines} from '../api/api'
-  import TitleInput from '../components/TitleInput'
+  import {addLevelTwo, levelTwoDetail, request, URLDefines} from '../../api/api'
+  import TitleInput from '../../components/TitleInput'
   export default {
     name: 'LevelOneDetail',
     data: function () {

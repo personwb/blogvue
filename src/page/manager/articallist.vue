@@ -36,7 +36,7 @@
 </template>
 
 <script>
-  import {URLDefines, request} from '../api/api'
+  import {URLDefines, request} from '../../api/api'
   export default {
     name: "articallist",
     data: function () {

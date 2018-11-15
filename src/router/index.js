@@ -1,20 +1,12 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Login from '@/page/login'
-import Home from '@/page/home'
-import Detail from '@/page/detail'
-import Manager from '@/page/manager'
-import LevelOne from '@/page/levelone'
-import LevelTwo from '@/page/leveltwo'
-import LevelOneDetail from '@/page/levelonedetail'
-import LevelTwoDetail from '@/page/leveltwodetail'
-import ArticalAdd from '@/page/articaladd'
-import ArticalList from '@/page/articallist'//设置title
+import Login from '@/page/login/login'
+import Home from '@/page/home/home'
+import Detail from '@/page/home/detail'
+import { routes as ManagerRoutes } from "../page/manager";
 import VueWechatTitle from 'vue-wechat-title'
+
 Vue.use(VueWechatTitle)
-
-import IOSIOS from '../blog/IOS/iOS'
-
 Vue.use(Router)
 
 export default new Router({
@@ -34,61 +26,31 @@ export default new Router({
         title: '登录'
       }
     },
-    {
-      path: '/manager',
-      name: 'Manager',
-      component: Manager,
-      children: [
-        {
-          path: '/manager/levelone',
-          component: LevelOne,
-          name: 'LevelOne',
-          meta: {
-            title: '一级列表'
-          }
-        },{
-          path: '/manager/levelone/detail',
-          name: 'LevelOneDetail',
-          component: LevelOneDetail,
-        },{
-          path: '/manager/leveltwo',
-          component: LevelTwo,
-          meta: {
-            title: '二级列表'
-          }
-        },{
-          path: '/manager/leveltwo/detail',
-          name: 'LevelTwoDetail',
-          component: LevelTwoDetail
-        },{
-          path: '/manager/artical/add',
-          name: 'ArticalAdd',
-          component: ArticalAdd,
-          meta: {
-            title: '文章编辑'
-          }
-        },{
-          path: '/manager/artical/list',
-          name: 'ArticalList',
-          component: ArticalList,
-          meta: {
-            title: '文章列表'
-          }
-        },
-      ]
-    },
+    ...ManagerRoutes,
     {
       path: '/home',
       name: 'Home',
       component: Home,
-      children: [{
-        path: '/home/artical/detail/:articalId',
-        component: Detail,
-      },{
-        path: '/home/artical/ios/ios',
-        component: IOSIOS,
-      }]
+      children: [
+        {
+          path: '/home/lt/:levelTwoId',
+          component: Home,
+        }]
+    },
+    {
+      path: '/home/artical/detail/:articalId',
+      component: Detail,
     },
 
   ]
 })
+
+/*获取文章详情路由路径*/
+export function articalDetalRouteByArtical(artical) {
+  return artical.contentType === 'route_path' ? artical.routePath : ('/home/artical/detail/' + artical.id)
+}
+
+/*获取文章详情路由路径*/
+export function levelTwoRouteById(id) {
+  return '/home/lt/' + id
+}

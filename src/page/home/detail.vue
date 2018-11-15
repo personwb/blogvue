@@ -1,19 +1,27 @@
 <template>
-    <div style="display: flex;flex: 1;height: 100%;flex-direction: column;">
-      <ArticalHeader :artical-data="articalData"></ArticalHeader>
-      <span v-if="html"
-            class="artical-body"
-            v-html="html"></span>
-      <div v-else
-           style="margin-top: 40px;"
-           v-loading="loading"
-           element-loading-text="客官稍等..."></div>
-    </div>
+    <div style="width: 100%;box-sizing: border-box;">
+      <div style="width: 100%;border-bottom: 1px solid #f0f0f0;">
+        <img style="width: 80px;height: 50px;margin: 10px;overflow: hidden;" src="../../assets/Onety.png"/>
+      </div>
+      <div class="artical-body">
+        <ArticalHeader :artical-data="articalData"></ArticalHeader>
+        <div v-if="html"
+             class="content-body">
+          <span v-if="html"
+                v-html="html"></span>
+        </div>
+        <div v-else
+             style="margin-top: 40px;"
+             v-loading="loading"
+             element-loading-text="客官稍等..."></div>
+        </div>
+      </div>
+
 </template>
 
 <script>
-  import ArticalHeader from '../components/ArticalHeader'
-  import {request, URLDefines, articalAdd} from '../api/api'
+  import ArticalHeader from '../../components/ArticalHeader'
+  import {request, URLDefines} from '../../api/api'
   export default {
     name: "detail",
     data: function () {
@@ -49,7 +57,7 @@
             this.articalData = inData
           }
         })
-      }
+      },
     },
 
     watch: {
@@ -65,6 +73,19 @@
 </script>
 <!--<style type="text/css">h1{color: blue;}</style>-->
 <style scoped>
+  .artical-body {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    max-width: 800px;
+    margin: 20px auto 40px auto;
+  }
+  .content-body {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    margin: 40px 0 0 0;
+  }
 
   >>> .hll { background-color: #ffffcc }
   >>> .c { color: #408080; font-style: italic } /* Comment */
@@ -134,10 +155,6 @@
   >>> .vi { color: #19177C } /* Name.Variable.Instance */
   >>> .vm { color: #19177C } /* Name.Variable.Magic */
   >>> .il { color: #666666 } /* Literal.Number.Integer.Long */
-
-  >>> .artical-body {
-    padding: 30px 30px 30px 30px;
-  }
 
   >>> body {
     font-family: Helvetica, arial, sans-serif;
