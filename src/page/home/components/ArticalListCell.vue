@@ -1,7 +1,7 @@
 <template>
-    <div class="body" v-on:click="onSelected">
-      <a class="title">{{data.title}}</a>
-      <p class="content">{{data.title}}</p>
+    <div class="body">
+      <a class="title" v-on:click="onSelected">{{data.title}}</a>
+      <p class="content">{{data.thumbnailText + '...'}}</p>
       <div style="margin-bottom: 8px;">
         <p class="content">{{'浏览：' + data.scan}}</p>
         <p class="content public">{{'发布：' + data.createTime}}</p>
@@ -28,7 +28,7 @@
 
 <style scoped>
   .body {
-    margin: 0 30px;
+    margin: 0 30px 20px 30px;
     border-bottom: 1px solid #f0f0f0;
     word-wrap: break-word;
   }

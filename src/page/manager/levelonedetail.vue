@@ -1,8 +1,8 @@
 <template>
   <div style="padding-left: 30px;padding-top: 40px;padding-right: 30px;">
-    <h3>{{(isAdd ? '增加' : '编辑') + '一级分类：'}}</h3>
-    <TitleInput title="一级菜单名称："
-                placeholder="输入一级菜单名称"
+    <h3>{{(isAdd ? '增加' : '编辑') + '语言分类：'}}</h3>
+    <TitleInput title="语言菜单名称："
+                placeholder="输入语言名称"
                 titleWidth="120"
                 style="margin-top: 30px;"
                 v-model="title"></TitleInput>

@@ -1,15 +1,15 @@
 <template>
   <div style="padding-left: 30px;padding-top: 40px;padding-right: 30px;">
-    <h3>{{(isAdd ? '增加' : '编辑') + '二级分类：'}}</h3>
+    <h3>{{(isAdd ? '增加' : '编辑') + '分组：'}}</h3>
     <div style="display: inline-block;margin-top: 20px;">
-      <span style="width: 120px;">关联一级菜单：</span>
+      <div style="display: inline-block;width: 120px;">关联语言：</div>
       <el-select v-model="levelOneId"
                  style="width: 200px;margin-top: 10px;">
         <el-option v-for="item in levelOneList" v-bind:key="item.id" v-bind:label="item.title" v-bind:value="item.id"></el-option>
       </el-select>
     </div>
-    <TitleInput title="二级菜单名称："
-                placeholder="输入二级菜单名称"
+    <TitleInput title="分组名称："
+                placeholder="输入分组名称"
                 titleWidth="120"
                 v-bind:value="title"
                 v-on:input="title=$event"
@@ -19,6 +19,7 @@
                style="margin-top: 30px;"
                type="primary">{{(isAdd ? '增加' : '编辑')}}</el-button>
     <el-button slot="tip"
+               v-if="!isAdd"
                v-on:click="onDelete"
                style="margin-top: 30px;"
                type="danger">删除</el-button>
@@ -50,7 +51,20 @@
     },
     methods: {
       onDelete () {
-
+        request({
+          path: URLDefines.levelTwoDelete,
+          data: {
+            id: this.$route.query.id,
+          },
+          callBack: ({error, inData}) => {
+            if (error) {
+              this.$message.error(error.message)
+              return
+            }
+            this.$message.success('删除成功')
+            this.$router.back()
+          }
+        })
       },
       getData () {
         if (this.isAdd) {

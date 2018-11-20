@@ -1,7 +1,9 @@
 <template>
     <div style="width: 100%;box-sizing: border-box;">
       <div style="width: 100%;border-bottom: 1px solid #f0f0f0;">
-        <img style="width: 80px;height: 50px;margin: 10px;overflow: hidden;" src="../../assets/Onety.png"/>
+        <img style="width: 80px;height: 50px;margin: 10px;overflow: hidden;cursor: pointer;"
+             v-on:click="onClickIcon"
+             src="../../assets/Onety.png"/>
       </div>
       <div class="artical-body">
         <ArticalHeader :artical-data="articalData"></ArticalHeader>
@@ -37,6 +39,9 @@
     },
     components: {ArticalHeader},
     methods: {
+      onClickIcon () {
+        this.$router.push('/home')
+      },
       getData () {
         this.loading = true
         if (!this.$route.params.articalId) {

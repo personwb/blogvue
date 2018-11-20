@@ -19,6 +19,7 @@ export const URLDefines = {
   levelTwoDetail: 'leveltwo/detail',
   addLevelTwo: 'leveltwo/add',
   levelTwoList: 'leveltwo/list',
+  levelTwoDelete: 'leveltwo/delete',
 
   levelOneTwoList: 'levelonetwolist',
 }

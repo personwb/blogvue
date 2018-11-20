@@ -5,11 +5,11 @@
       <el-row :span="2" type="flex" align="middle" >
         <img style="width: 200px;height: 130px;margin: 20px 20px 0 20px;" src="../../assets/Onety.png"/>
         <div style="display: inline-block; margin-left: 30px;margin-bottom: 10px;flex-wrap: wrap">
-          <span v-for="item in allOne"
+          <div v-for="item in allOne"
                 onselectstart="return false"
                 v-bind:key="item.id"
                 v-bind:class="levelOne.id === item.id ? 'funcBtnHover' : 'funcBtn'"
-                v-on:click="onClickLevelOne(item)">{{item.title}}</span>
+                v-on:click="onClickLevelOne(item)">{{item.title}}</div>
         </div>
       </el-row>
       <div style="padding-top: 20px;border-top: 1px solid #f0f0f0;">
@@ -31,7 +31,7 @@
 </template>
 
 <script>
-  import { articalDetalRouteByArtical } from '../../router/index'
+  import { articalDetalRouteByArtical , levelTwoRouteById} from '../../router/index'
   import LevelTwoListCell from './components/LevelTwoListCell'
   import ArticalListCell from './components/ArticalListCell'
   import {URLDefines, request} from '../../api/api'
@@ -42,8 +42,6 @@
       },
       data: function () {
         return {
-          defaultOpens: [],
-          defaultActive: null,
           allOne: [],
           levelOne: {},
           levelTwo: {},
@@ -57,11 +55,10 @@
       },
       methods: {
         onSelectLevelTwo (item) {
-          this.levelTwo = item;
+          this.$router.push(levelTwoRouteById(item.id))
         },
         onClickLevelOne (levelOne) {
-          this.levelOne = levelOne
-          this.levelTwo = this.levelOne.levelTwoList[0]
+          this.$router.push(levelTwoRouteById(levelOne.levelTwoList[0].id))
         },
         onSelectedArtical (artical) {
           let path = articalDetalRouteByArtical(artical)
@@ -149,7 +146,15 @@
 
 <style scoped>
   .funcBtnHover, .funcBtn:hover {
-    margin-left: 20px;color: #2DB2F6;font-size: 20px;border: 1px #2DB2F655;border-radius:4px;padding: 3px 8px;background-color:#2DB2F633;
+    overflow: hidden;
+    display: inline-block;
+    margin-left: 20px;
+    color: #2DB2F6;
+    font-size: 20px;
+    border: 1px #2DB2F655;
+    border-radius:4px;
+    padding: 3px 8px;
+    background-color:#2DB2F633;
     cursor: pointer;
     -moz-user-select:none;/*火狐*/
     -webkit-user-select:none;/*webkit浏览器*/
@@ -157,6 +162,8 @@
     user-select:none;
   }
   .funcBtn {
+    display: inline-block;
+    overflow: hidden;
     margin-left: 20px;color: #2DB2F6;font-size: 20px;padding: 3px 8px;
     cursor: pointer;
     -moz-user-select:none;/*火狐*/

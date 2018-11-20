@@ -2,7 +2,7 @@
     <div style="display: flex; flex-direction: row;align-items: center;height: 44px;">
       <label for="input" v-bind:style="{width: titleWidth + 'px', textAlign: 'left', color: '#4a4a4a', fontSize: '16px'}" >{{title}}</label>
       <el-input
-        style="width: 250px;"
+        v-bind:style="{width: _inputWidth}"
         v-bind:placeholder="placeholder"
         v-model="p_value"
         clearable>
@@ -20,6 +20,10 @@ export default {
     titleWidth: {
       default: 100
     },
+    inputWidth: {
+      default:250,
+      type: Number,
+    },
     hint: String,
     value: String
   },
@@ -27,6 +31,9 @@ export default {
     return {}
   },
   computed: {
+    _inputWidth () {
+      return this.inputWidth + 'px';
+    },
     p_value: {
       get: function () {
         return this.value
