@@ -1,7 +1,7 @@
 <template>
     <div style="width: 100%;box-sizing: border-box;">
       <div style="width: 100%;border-bottom: 1px solid #f0f0f0;">
-        <img style="width: 80px;height: 50px;margin: 10px;overflow: hidden;cursor: pointer;"
+        <img style="width: 80px;height: 50px;margin: 10px 0 0 10px;overflow: hidden;cursor: pointer;"
              v-on:click="onClickIcon"
              src="../../assets/Onety.png"/>
       </div>
@@ -84,6 +84,7 @@
     box-sizing: border-box;
     max-width: 800px;
     margin: 20px auto 40px auto;
+    padding: 0 20px 0 20px;
   }
   .content-body {
     -webkit-box-sizing: border-box;

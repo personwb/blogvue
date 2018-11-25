@@ -1,9 +1,8 @@
 <template>
 
     <div style="width: 100%;height: 100%;">
-
       <el-row :span="2" type="flex" align="middle" >
-        <img style="width: 200px;height: 130px;margin: 20px 20px 0 20px;" src="../../assets/Onety.png"/>
+        <img style="width: 200px;height: 130px;margin: 20px 20px 0 20px;" src="../../../assets/Onety.png"/>
         <div style="display: inline-block; margin-left: 30px;margin-bottom: 10px;flex-wrap: wrap">
           <div v-for="item in allOne"
                 onselectstart="return false"
@@ -31,10 +30,11 @@
 </template>
 
 <script>
-  import { articalDetalRouteByArtical , levelTwoRouteById} from '../../router/index'
+  import Device from 'current-device'
+  import { articalDetalRouteByArtical, levelTwoRouteById, mobileHomeRoute, isMobileRoute } from '../../../router/index'
   import LevelTwoListCell from './components/LevelTwoListCell'
   import ArticalListCell from './components/ArticalListCell'
-  import {URLDefines, request} from '../../api/api'
+  import { URLDefines, request } from '../../../api/api'
     export default {
       name: "home",
       components: {
@@ -66,12 +66,14 @@
           window.open(routeData.href, '_blank');
         },
         updateDataByRoute () {
-
+          if (Device.mobile() && !isMobileRoute(this.$route.path)) {
+            this.$router.replace(mobileHomeRoute())
+            return
+          }
           if (!this.data) {
             this.getData()
             return
           }
-
           // 是否需要重定向
           let needRedict = false
           let levelOne = null
@@ -96,7 +98,7 @@
           }
 
           if (needRedict) {
-            this.$router.replace('/home/lt/' + levelTwoId)
+            this.$router.replace(levelTwoRouteById(levelTwoId))
           } else {
             this.levelOne = levelOne
             this.levelTwo = levelTwo
@@ -130,7 +132,12 @@
         },
       },
       mounted: function () {
-        this.getData()
+        console.log(Device.mobile())
+        if (Device.mobile() && !isMobileRoute(this.$route.path)) {
+          this.$router.replace(mobileHomeRoute())
+        } else {
+          this.getData()
+        }
       },
       computed: {
         urlLevelTwoId: function () {
