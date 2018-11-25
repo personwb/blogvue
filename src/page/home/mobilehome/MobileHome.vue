@@ -22,17 +22,16 @@
         <div class="levelOne">
           <LevelTwoListCell v-for="lt in data"
                             editable
-                            v-bind:selected="levelOne.id===lt.id"
+                            v-bind:selected="directoryLevelOne.id===lt.id"
                             v-bind:title="lt.title"
-                            v-on:edit="onClickLevelOne(lt)"
                             v-on:selected="onClickLevelOne(lt)"
                             v-bind:key="lt.id">
           </LevelTwoListCell>
         </div>
         <div class="levelTwo">
-          <LevelTwoListCell v-for="lt in levelOne.levelTwoList"
+          <LevelTwoListCell v-for="lt in directoryLevelOne.levelTwoList"
                             editable
-                            v-bind:selected="levelTwo.id===lt.id"
+                            v-bind:selected="directoryLevelTwo.id===lt.id"
                             v-bind:title="lt.title"
                             v-on:selected="onSelectLevelTwo(lt)"
                             v-bind:key="lt.id">
@@ -56,7 +55,9 @@
         dialogVisible: false,
         data: [],
         levelOne: {},
-        levelTwo: {}
+        levelTwo: {},
+        directoryLevelOne: {},
+        directoryLevelTwo: {},
       }
     },
     components: {
@@ -107,7 +108,7 @@
         window.open(routeData.href, '_blank');
       },
       onClickLevelOne (item) {
-        this.levelOne = item
+        this.directoryLevelOne = item
       },
       onSelectLevelTwo (item) {
         this.dialogVisible = false
