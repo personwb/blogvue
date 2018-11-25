@@ -72,6 +72,12 @@
       '$route'(to, from) {
         this.updateDataByRoute()
       },
+      'levelOne'(to, from) {
+        this.directoryLevelOne = to
+      },
+      'levelTwo'(to, from) {
+        this.directoryLevelTwo = to
+      },
     },
     computed: {
       emptyDesc () {

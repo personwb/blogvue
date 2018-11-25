@@ -51,7 +51,7 @@
     overflow: hidden;
     cursor: pointer;
   }
-  .body:hover, .bodySelected {
+   .bodySelected {
     overflow: hidden;
     /*background-color: #666;*/
     background-color: #eee;
