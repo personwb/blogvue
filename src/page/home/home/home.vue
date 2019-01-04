@@ -10,6 +10,9 @@
                 v-bind:class="levelOne.id === item.id ? 'funcBtnHover' : 'funcBtn'"
                 v-on:click="onClickLevelOne(item)">{{item.title}}</div>
         </div>
+        <div style="display: inline-block;min-width: 100px;">
+          <h3>个人中心</h3>
+        </div>
       </el-row>
       <div style="padding-top: 20px;border-top: 1px solid #f0f0f0;">
         <div style="display: inline-block;width: 180px;margin: 0;box-sizing: border-box;padding-left: 20px;">
@@ -18,6 +21,9 @@
                             v-bind:selected="lt.id===levelTwo.id"
                             v-on:selected="onSelectLevelTwo(lt)"
                             v-bind:key="lt.index"></LevelTwoListCell>
+        </div>
+        <div v-if="emptyDesc" style="text-align: center;margin-top: 40px;color: gray;">
+          {{emptyDesc}}
         </div>
         <div style="float: right;width: calc(100% - 180px);left: 180px;top: 150px;">
           <ArticalListCell v-for="artical in levelTwo.articalList"
@@ -140,6 +146,12 @@
         }
       },
       computed: {
+        emptyDesc () {
+          if (this.levelTwo.title && this.levelTwo.articalList.length === 0) {
+            return "\"" + this.levelOne.title + ' > ' + this.levelTwo.title + '\"' + '下暂无文章，博主正在补充'
+          }
+          return null
+        },
         urlLevelTwoId: function () {
           let params = this.$route.params;
           if (params && params.levelTwoId) {

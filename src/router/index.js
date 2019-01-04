@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Login from '@/page/login/login'
 import Home from '@/page/home/home/home'
 import Detail from '@/page/artical/detail'
+import About from '@/page/About/about'
 import { routes as ManagerRoutes } from "../page/manager";
 import MobileHome from '../page/home/mobilehome/MobileHome';
 import VueWechatTitle from 'vue-wechat-title'
@@ -14,6 +15,14 @@ Vue.use(Router)
 export default new Router({
   mode: 'hash',
   routes: [
+    {
+      path: '/about',
+      name: 'About',
+      component: ()=>import('@/page/About/about'),
+      meta: {
+        title: '关于我'
+      }
+    },
     {
       path: '/',
       redirect: {
