@@ -5,6 +5,7 @@
            class="body">
         <p class="title">欢迎来到 Onety 博客</p>
         <AnimateComponent v-for="item in page1.points"
+                          v-bind:key="item.title"
                           :x="item.x"
                           :y="item.y"
                           :color="item.color"
@@ -17,13 +18,38 @@
     </transition>
 
     <transition name="slide-fade">
-      <div v-if="index > 1 || index === 1" class="body" style="background-color: #D0021B">
+      <div v-if="index > 1 || index === 1" class="body" style="background-color: #EF9A48;overflow-y: scroll;">
+        <h1 style="text-align: center;color: white;font-size: 30px;margin-top: 46px;">博客</h1>
+        <div style="width: 80%;margin-left:auto;margin-right:auto;margin-top: 22px;">
+          <h2 style="color: white;font-size: 22px;text-indent: 2em;">本博客系统是一款针对IT开发人员的博客管理系统。框架为两级菜单和目录，一级菜单为语言，例如：Python、Swift等，二级菜单为语言中的模块分类，例如：知识点、公共库、笔记等，目录
+            即文章目录。编辑支持MarkDown编辑和Vue page。开发人员可以便捷的搭建个人博客系统。
+            博客系统由本人独立完成，由于时间有限，目前只开发了部分功能。开发博客系统为了记录一些个人笔记，同时也是技术的成长。
+            想做好技术，就要做好每天的进步。</h2>
+          <br/>
+          <h3 style="color: white;font-size: 20px;line-height: 35px;">前端：Vue</h3>
+          <h3 style="color: white;font-size: 20px;line-height: 35px;">服务：Python + Django + CentOS + Nginx + Uwsgi</h3>
+          <h3 style="color: white;font-size: 20px;line-height: 35px;">兼容：PC、Mobile</h3>
+          <h3 style="color: white;font-size: 20px;line-height: 35px;">功能：手机端和电脑端UI布局均支持 文章管理系统、浏览量统计</h3>
+          <h3 style="color: white;font-size: 20px;line-height: 35px;">开发中：上下章、点赞、评论系统、用户系统</h3>
+        </div>
         <img v-on:click="onNext" class="next" src="./Source/next.png"/>
       </div>
     </transition>
 
     <transition name="slide-fade">
-      <div v-if="index > 2 || index === 2" class="body" style="background-color: #EF9A48">
+      <div v-if="index > 2 || index === 2" class="body" style="background-color: #D0021B">
+        <img v-on:click="onNext" class="next" src="./Source/next.png"/>
+      </div>
+    </transition>
+
+    <transition name="slide-fade">
+      <div v-if="index > 3 || index === 3" class="body" style="background-color: white">
+        <img v-on:click="onNext" class="next" src="./Source/next.png"/>
+      </div>
+    </transition>
+
+    <transition name="slide-fade">
+      <div v-if="index > 4 || index === 4" class="body" style="background-color: #EF9A48">
         <img v-on:click="onTop" class="next" src="./Source/next.png"/>
       </div>
     </transition>

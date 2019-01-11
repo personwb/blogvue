@@ -18,7 +18,6 @@
     <TitleInput v-model="data.title"
                 style="margin-top: 20px;"
                 title-width="150"
-                :input-width="450"
                 placeholder="文章名称"
                 title="文章名称："></TitleInput>
     <div style="margin-top: 10px;display: flex;flex-direction: row;align-items: center;height: 44px;">

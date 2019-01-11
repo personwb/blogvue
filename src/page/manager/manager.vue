@@ -229,7 +229,7 @@
     margin: 0;
     padding: 0 0 0 0;
     float: left;
-    width: 140px;
+    width: 100px;
     box-sizing: border-box;
     background-color: #4a4a4a;
     border-right: 1px solid #9b9b9b;
@@ -248,7 +248,7 @@
     min-height: 100%;
     margin: 0;
     float: left;
-    width:200px;
+    width:180px;
     padding: 0 0 0 0;
     box-sizing: border-box;
     background-color: #4a4a4a;

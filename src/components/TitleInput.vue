@@ -1,8 +1,8 @@
 <template>
     <div style="display: flex; flex-direction: row;align-items: center;height: 44px;">
-      <label for="input" v-bind:style="{width: titleWidth + 'px', textAlign: 'left', color: '#4a4a4a', fontSize: '16px'}" >{{title}}</label>
+      <label for="input" v-bind:style="{minWidth: titleWidth + 'px', textAlign: 'left', color: '#4a4a4a', fontSize: '16px'}" >{{title}}</label>
       <el-input
-        v-bind:style="{width: _inputWidth}"
+        v-bind:style="{minWidth: _inputWidth, maxWidth: _inputWidth}"
         v-bind:placeholder="placeholder"
         v-model="p_value"
         clearable>
